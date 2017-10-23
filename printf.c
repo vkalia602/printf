@@ -6,13 +6,14 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int i, j;
+	int length = 0;
 
 	print fmt[] = {
 	{"c", print_char},
 	{"s", print_string},
 	{"i", print_int},
 	{"d", print_int},
-	{NULL, NULL},
+	{NULL, NULL}
 	};
 
 	va_start(ap, format);
@@ -26,7 +27,7 @@ int _printf(const char *format, ...)
 			{
 				if (*(fmt[j].form) == format[i + 1])
 				{
-					fmt[j].f(ap);
+					length += fmt[j].f(ap);
 					i++;
 				}
 				j++;
@@ -40,7 +41,8 @@ int _printf(const char *format, ...)
 		else
 			_putchar(format[i]);
 		i++;
+		length++;
 	}
 	va_end(ap);
-	return (0);
+	return (length);
 }

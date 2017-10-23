@@ -1,6 +1,6 @@
 #include "holberton.h"
 #include <stdarg.h>
-void print_int(va_list ap)
+int print_int(va_list ap)
 {
 	int c, i, output, reverse = 0, depth = 0;
 	c = va_arg(ap, int);
@@ -27,5 +27,5 @@ void print_int(va_list ap)
 		_putchar(output + '0');
 		reverse /= 10;
 	}
-
+	return (depth);
 }
