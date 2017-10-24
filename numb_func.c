@@ -12,16 +12,19 @@
 
 int print_int(va_list ap)
 {
-	int c, divisor = 1, length = 0;
+      	int value, divisor = 1, length = 0;
+	unsigned int c = 0;
 
-	c = va_arg(ap, int);
+	value = va_arg(ap, int);
 
-	if (c < 0)
+	if (value < 0)
 	{
 		_putchar('-');
-		c *= -1;
+		c = value * -1;
 		length++;
 	}
+	
+	c = value;
 
 	while (c / divisor > 9)
 	{
