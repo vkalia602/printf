@@ -2,10 +2,10 @@
 #define HOLBERTON_H_
 #include <stdarg.h>
 /**
- * struct op - Struct op
+ * struct printformat - Struct printformat
  *
- * @op: The operator
- * @f: The function associated
+ * @form: format specifier
+ * @f: function pointer
  */
 typedef struct printformat
 {
