@@ -1,13 +1,16 @@
 #include "holberton.h"
 #include <stdarg.h>
 
+
 /**
  * print_int   - Outputs interpolated argument from @ap
  *
  * @ap:          Variadic list of arguments to be processed
+ *
+ * Return:       Length of processed data
  */
 
-void print_int(va_list ap)
+int print_int(va_list ap)
 {
 	int c, i, output, reverse = 0, depth = 0;
 
@@ -35,5 +38,5 @@ void print_int(va_list ap)
 		_putchar(output + '0');
 		reverse /= 10;
 	}
-
+	return (depth);
 }

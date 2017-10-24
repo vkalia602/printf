@@ -8,25 +8,26 @@
  * @format:          The main string passed in to be printed
  * @i:               Index in @format when interpolation is triggered
  * @ap:              Variadic list containing arguments to be processed
+ * @length:          Total length of @format up to current processing
  *
  * Return:           (i) to printf so it may continue to process @format
  */
 
-int interpolate(const char *format, int i, va_list ap)
+int interpolate(const char *format, int i, va_list ap, int length)
 {
 	int escape = 0, j = 0;
 
 	print fmt[] = {
 	{"c", print_char}, {"s", print_string},
 	{"i", print_int}, {"d", print_int},
-	{NULL, NULL},
+	{NULL, NULL}
 	};
 
 	while (fmt[j].form != NULL)
 	{
 		if (*(fmt[j].form) == format[i + 1])
 		{
-			fmt[j].f(ap);
+			length += fmt[j].f(ap);
 			i++;
 			escape = 1;
 		}
@@ -43,7 +44,7 @@ int interpolate(const char *format, int i, va_list ap)
 		i++;
 	}
 
-	return (i);
+	return (length);
 }
 
 /**
@@ -58,7 +59,7 @@ int interpolate(const char *format, int i, va_list ap)
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0;
+	int i = 0, length = 0;
 
 	va_start(ap, format);
 
@@ -66,14 +67,16 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i = interpolate(format, i, ap);
+			length = interpolate(format, i, ap, length);
+			i++;
 		}
 		else
 		{
 			_putchar(format[i]);
 		}
 		i++;
+		length++;
 	}
 	va_end(ap);
-	return (0);
+	return (length);
 }

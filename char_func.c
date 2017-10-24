@@ -5,19 +5,20 @@
  * @ap: format of the incoming parameters
  * Return: void
  */
-void print_char(va_list ap)
+int print_char(va_list ap)
 {
 	char s;
 
 	s = va_arg(ap, int);
 	_putchar(s);
+	return (1);
 }
 /**
  * print_string - prints all the parameters according to their format
  * @ap:           Variadic list of arguments to be processed
  * Return: void
  */
-void print_string(va_list ap)
+int print_string(va_list ap)
 {
 	char *s;
 	int i = 0;
@@ -29,4 +30,5 @@ void print_string(va_list ap)
 		_putchar(s[i]);
 		i++;
 	}
+	return (i);
 }
