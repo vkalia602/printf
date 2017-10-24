@@ -37,9 +37,11 @@ int interpolate(const char *format, int i, va_list ap, int length)
 	if (escape == 0)
 	{
 		_putchar('%');
+		length++;
 		if (format[i + 1] != '%')
 		{
 			_putchar(format[i + 1]);
+			length++;
 		}
 		i++;
 	}
@@ -73,9 +75,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			_putchar(format[i]);
+			length++;
 		}
 		i++;
-		length++;
 	}
 	va_end(ap);
 	return (length);

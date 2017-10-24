@@ -13,6 +13,7 @@
 int print_int(va_list ap)
 {
 	int c, i, output, reverse = 0, depth = 0;
+	int length = 0;
 
 	c = va_arg(ap, int);
 
@@ -20,6 +21,7 @@ int print_int(va_list ap)
 	{
 		_putchar('-');
 		c *= -1;
+		length++;
 	}
 
 	while (c != 0)
@@ -38,5 +40,5 @@ int print_int(va_list ap)
 		_putchar(output + '0');
 		reverse /= 10;
 	}
-	return (depth);
+	return (depth + length);
 }
