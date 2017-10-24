@@ -61,6 +61,9 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int i = 0, length = 0;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(ap, format);
 
 	while (format[i] != '\0')
