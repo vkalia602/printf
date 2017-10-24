@@ -1,0 +1,1 @@
+Printf function prints character strings, characters, integers and digits. 
