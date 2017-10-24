@@ -1,20 +1,21 @@
 #include "holberton.h"
 #include <stdarg.h>
 /**
- * print_all - prints all the parameters according to their format
- * @format: format of the incoming parameters
+ * print_char - prints all the parameters according to their format
+ * @ap: format of the incoming parameters
  * Return: void
  */
 int print_char(va_list ap)
 {
 	char s;
+
 	s = va_arg(ap, int);
 	_putchar(s);
 	return (1);
 }
 /**
- * print_all - prints all the parameters according to their format
- * @ap:
+ * print_string - prints all the parameters according to their format
+ * @ap:           Variadic list of arguments to be processed
  * Return: void
  */
 int print_string(va_list ap)
