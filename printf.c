@@ -72,8 +72,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			length = interpolate(format, i, ap, length);
-			i++;
+			if (format[i + 1] == '\0')
+				return (-1);
+			else
+			{
+				length = interpolate(format, i, ap, length);
+				i++;
+			}
 		}
 		else
 		{
