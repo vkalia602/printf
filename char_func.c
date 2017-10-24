@@ -16,7 +16,7 @@ int print_char(va_list ap)
 }
 /**
  * print_string - prints all the parameters according to their format
- * @ap:           Variadic list of arguments to be processed
+ * @ap: Variadic list of arguments to be processed
  * Return: void
  */
 int print_string(va_list ap)
