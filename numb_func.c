@@ -12,10 +12,9 @@
 
 int print_int(va_list ap)
 {
-      	int value, divisor = 1, length = 0;
+      	int divisor = 1, length = 0;
 	unsigned int c = 0;
-
-	value = va_arg(ap, int);
+	int value = va_arg(ap, int);
 
 	if (value < 0)
 	{
@@ -23,8 +22,10 @@ int print_int(va_list ap)
 		c = value * -1;
 		length++;
 	}
-	
-	c = value;
+	else
+	{
+		c = value;
+	}
 
 	while (c / divisor > 9)
 	{
