@@ -12,8 +12,7 @@
 
 int print_int(va_list ap)
 {
-	int c, i, output, reverse = 0, depth = 0;
-	int length = 0;
+	int c, divisor = 1, length = 0;
 
 	c = va_arg(ap, int);
 
@@ -24,21 +23,18 @@ int print_int(va_list ap)
 		length++;
 	}
 
-	while (c != 0)
+	while (c / divisor > 9)
 	{
-		reverse *= 10;
-		reverse += (c % 10);
-		c /= 10;
-		depth++;
+		divisor *= 10;
 	}
 
-	depth = depth == 0 ? 1 : depth;
-
-	for (i = 0; i < depth; i++)
+	while (divisor > 0)
 	{
-		output = reverse % 10;
-		_putchar(output + '0');
-		reverse /= 10;
+		_putchar((c / divisor) + '0');
+		c %= divisor;
+		divisor /= 10;
+		length++;
 	}
-	return (depth + length);
+
+	return (length);
 }
