@@ -1,7 +1,6 @@
 #include "holberton.h"
 #include <stdarg.h>
 #include <stdlib.h>
-#include <limits.h>
 
 /**
  * interpolate     - Assist printf with data interpolation in @string
