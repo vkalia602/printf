@@ -68,6 +68,7 @@ int print_bin(va_list ap)
 	int length = 0;
 
 	length = convert(value, base);
+	length -= 2;
 
 
 	return (length);
