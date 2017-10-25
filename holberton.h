@@ -17,4 +17,5 @@ int print_char(va_list ap);
 int print_string(va_list ap);
 int print_int(va_list ap);
 int _putchar(char c);
+int print_rot13(va_list ap);
 #endif
