@@ -1,6 +1,7 @@
 #include "holberton.h"
 #include <stdarg.h>
 
+#include <stdio.h>
 
 /**
  * print_int   - Outputs interpolated argument from @ap
@@ -12,33 +13,62 @@
 
 int print_int(va_list ap)
 {
-	int c, i, output, reverse = 0, depth = 0;
-	int length = 0;
+      	int divisor = 1, length = 0;
+	unsigned int c = 0;
+	int value = va_arg(ap, int);
 
-	c = va_arg(ap, int);
-
-	if (c < 0)
+	if (value < 0)
 	{
 		_putchar('-');
-		c *= -1;
+		c = value * -1;
+		length++;
+	}
+	else
+	{
+		c = value;
+	}
+
+	while (c / divisor > 9)
+	{
+		divisor *= 10;
+	}
+
+	while (divisor > 0)
+	{
+		_putchar((c / divisor) + '0');
+		c %= divisor;
+		divisor /= 10;
 		length++;
 	}
 
-	while (c != 0)
+	return (length);
+}
+
+int convert(unsigned int value, unsigned int base)
+{
+	unsigned int answer = value % base;
+	int depth = 1;
+
+	value = value / base;
+
+	if (value > 0)
 	{
-		reverse *= 10;
-		reverse += (c % 10);
-		c /= 10;
-		depth++;
+		depth = convert(value, base);
 	}
 
-	depth = depth == 0 ? 1 : depth;
+	_putchar(answer + '0');
+	return (1 + depth);
+}
 
-	for (i = 0; i < depth; i++)
-	{
-		output = reverse % 10;
-		_putchar(output + '0');
-		reverse /= 10;
-	}
-	return (depth + length);
+
+int print_bin(va_list ap)
+{
+	unsigned int value = va_arg(ap, int);
+	unsigned int base = 2;
+	int length = 0;
+
+	length = convert(value, base);
+
+
+	return (length);
 }

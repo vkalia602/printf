@@ -20,8 +20,12 @@ int interpolate(const char *format, int i, va_list ap, int length)
 	print fmt[] = {
 	{"c", print_char}, {"s", print_string},
 	{"i", print_int}, {"d", print_int},
+<<<<<<< HEAD
 	{"R", print_rot13},
 	{NULL, NULL}
+=======
+	{"b", print_bin}, {NULL, NULL}
+>>>>>>> 7d1b1b3f8444dbe274f10a3e26b1f4cb07fa6c9c
 	};
 
 	while (fmt[j].form != NULL)

@@ -16,6 +16,8 @@ int _printf(const char *format, ...);
 int print_char(va_list ap);
 int print_string(va_list ap);
 int print_int(va_list ap);
+int print_bin(va_list ap);
+int convert(unsigned int value, unsigned int base);
 int _putchar(char c);
 int print_rot13(va_list ap);
 #endif
